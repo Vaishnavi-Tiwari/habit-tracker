@@ -11,6 +11,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
+
 app.use("/habits", habitRoutes);
 app.use("/users", userRoutes);
 
@@ -53,13 +54,13 @@ app.post("/subscribe", (req, res) => {
     .catch((err) => console.error(err));
 });
 
-app.get("/worker.js", (req, res) => {
+/*app.get("/worker.js", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "worker.js"));
   console.log("app ");
 });
 app.get("*", function response(req, res) {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
-//Listener
+//Listener*/
 
 app.listen(4000, () => console.log(`Its running on port 4000`));

@@ -1,14 +1,14 @@
 .todo {
   /*border*/
 
-  border-radius: 20px;
+  border-radius: 100px;
   -moz-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
   transform: translate(-50%, -50%);
-  margin: 0.5rem;
+  margin: 5rem;
   background-color: red;
-  font-size: 1.5rem;
+  font-size: 2rem;
   transition: all 1.5s ease;
 }
 
@@ -16,18 +16,18 @@
   /*el fondito azul*/
   display: flex;
   justify-content: center;
-  background-color: #edf2f4;
+  background-color: #f1f1e9;
   height: 220px;
 }
 .container .chart-container {
   padding: 20px; /*distancia del techo*/
 }
 .container .chart-container .back {
-  stroke: #f1dede;
+  stroke: #f5f5f2;
   stroke-width: 15; /*el ancho del circulo*/
 }
 .container .chart-container .front {
-  stroke: #d496a7;
+  stroke: #1bbce4;
   stroke-width: 15;
   stroke-linecap: round;
   stroke-dasharray: 395.84;
@@ -35,7 +35,7 @@
   transform-origin: 5.8em; /*position*/
 }
 .container .chart-container .text {
-  font-size: 35px;
+  font-size: 45px;
   fill: #063045;
 }
 
@@ -62,13 +62,13 @@
 }
 
 .habit-container {
-  background-color: #c79538;
-  margin-top: 0;
-  max-width: 300px;
+  background-color: #000080;
+  margin-top: 60;
+  max-width: 350px;
   border-radius: 27px; /*depth idea*/
   margin-left: 2.5rem;
   box-shadow: 0px 15px 35px 0px rgba(0, 0, 0, 0.3) !important;
-  border-color: black;
+  border-color: rgb(0, 0, 0);
   margin-bottom: 35px;
   transform: translateY(20px);
   transition: 0.5s;
@@ -87,7 +87,7 @@
 
 .check-btn {
   padding: 1px !important;
-  color: #f5b748 !important;
+  color: #0ebd2b !important;
 }
 
 .change {
@@ -105,7 +105,7 @@
 }
 .btn {
   width: 200px;
-  height: 30px;
+  height: 500px;
   border: 1px solid #cdcdcd;
   background: white;
   border-radius: 25px;
