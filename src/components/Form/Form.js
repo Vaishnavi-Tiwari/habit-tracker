@@ -83,7 +83,7 @@ function Form({ currentId, setCurrentId }) {
       dispatch(createHabit(habits));
     }
     clear();
-    history.push("/habits");
+    history.push("/home/habits");
   };
 
   const clear = () => {
@@ -139,6 +139,7 @@ function Form({ currentId, setCurrentId }) {
           size="large"
           onClick={submitTodoHandler}
           className="form_button"
+          disabled={!user?.result}
         >
           Add
         </Button>

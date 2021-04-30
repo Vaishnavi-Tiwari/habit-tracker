@@ -115,23 +115,15 @@ function Habit({ habit, setCurrentId }) {
           <IconButton className="notif-btn">
             <NotificationsNoneOutlinedIcon />
           </IconButton>
-
-          {(user?.result?.googleId == habit?.creator ||
-            user?.result?._id == habit?.creator) && (
-            <IconButton className="del-btn">
-              <CreateOutlinedIcon onClick={() => editClicked(habit)} />
-            </IconButton>
-          )}
-
-          {(user?.result?.googleId == habit?.creator ||
-            user?.result?._id == habit?.creator) && (
-            <IconButton className="del-btn">
-              <DeleteOutlineOutlinedIcon
-                onClick={() => dispatch(deleteHabit(habit._id))}
-                {...classes.ButtonChange}
-              />
-            </IconButton>
-          )}
+          <IconButton className="del-btn">
+            <CreateOutlinedIcon onClick={() => editClicked(habit)} />
+          </IconButton>
+          <IconButton className="del-btn">
+            <DeleteOutlineOutlinedIcon
+              onClick={() => dispatch(deleteHabit(habit._id))}
+              {...classes.ButtonChange}
+            />
+          </IconButton>
         </CardActions>
       </Card>
     </div>

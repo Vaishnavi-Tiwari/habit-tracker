@@ -1,53 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import {
-  Button,
-  Input,
-  AppBar,
-  Avatar,
-  Typography,
-  Toolbar,
-} from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
-import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import SideBar from "./SideBar";
+import "./header.css";
+import $ from "jquery";
+import { NavLink } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    height: 36,
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
-//-----
 function Header() {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  console.log(user);
-
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
@@ -66,70 +30,73 @@ function Header() {
   }, [location]);
 
   return (
-    <div>
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <IconButton color="inherit">
-              <SideBar />
-            </IconButton>
-            {user ? (
-              <Typography variant="h6" className={classes.title}>
-                {user.result.name || user.name}
-              </Typography>
-            ) : (
-              ""
-            )}
-            <div>
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
+    <nav className="navbar navbar-expand-lg navbar-light  navbar-fixed-top">
+      <NavLink className="navbar-brand navbar-logo" to="/" exact>
+        habit
+      </NavLink>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav ml-auto">
+          {user?.result ? (
+            <>
+              <Avatar
+                className="Avatar"
+                alt={user?.result.name}
+                src={user?.result.imageUrl}
               >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={open}
-                onClose={handleClose}
+                {user?.result.name.charAt(0)}
+              </Avatar>
+              <h5> {user?.result?.name}</h5>
+            </>
+          ) : (
+            <></>
+          )}
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/home/habits" exact>
+              <i className="far fa-address-book"></i>My habits
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/home/form" exact>
+              <i className="far fa-address-book"></i>Create Habit
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/home/profile" exact>
+              <i className="far fa-address-book"></i>Profile
+            </NavLink>
+          </li>
+          {user?.result ? (
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                to="/home/events"
+                exact
+                onClick={logout}
               >
-                {user ? (
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
-                ) : (
-                  <MenuItem component={Link} to="/auth">
-                    Sign In
-                  </MenuItem>
-                )}
-
-                <MenuItem onClick={handleClose}>Contact Us</MenuItem>
-              </Menu>
-            </div>
-          </Toolbar>
-        </AppBar>
+                <i className="far fa-copy"></i>Logout
+              </NavLink>
+            </li>
+          ) : (
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/auth" exact>
+                <i className="far fa-copy"></i>Sign up
+              </NavLink>
+            </li>
+          )}
+        </ul>
       </div>
-      {/* <div>
-        {user ? <h3>{user.name}</h3> : ""}
-        
-        
-      </div> */}
-    </div>
+    </nav>
   );
 }
 

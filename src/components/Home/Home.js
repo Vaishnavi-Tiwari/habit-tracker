@@ -15,21 +15,19 @@ function Home() {
 
   return (
     <div>
-      <Router>
-        <Switch>
-          <Route
-            path="/form"
-            component={() => (
-              <Form currentId={currentId} setCurrentId={setCurrentId} />
-            )}
-          />
-          <Route
-            path="/habits"
-            exact
-            component={() => <Habits setCurrentId={setCurrentId} />}
-          />
-        </Switch>
-      </Router>
+      <Switch>
+        <Route
+          path="/home/form"
+          component={() => (
+            <Form currentId={currentId} setCurrentId={setCurrentId} />
+          )}
+        />
+        <Route
+          path="/home/habits"
+          exact
+          component={() => <Habits setCurrentId={setCurrentId} />}
+        />
+      </Switch>
     </div>
   );
 }

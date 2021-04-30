@@ -13,7 +13,7 @@ function App() {
         <Switch>
           {/* <Route path="/addHabit" exact component={Home} /> */}
           <Route path="/auth" exact component={Auth} />
-          <Home />
+          <Route path="/home" component={Home} />
         </Switch>
       </Router>
     </div>

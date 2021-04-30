@@ -10,15 +10,16 @@ function Habits({ setCurrentId }) {
   ) : (
     <div>
       <Grid container>
+        {!user?.result && <h4 className="info">Login to check your habits</h4>}
         {habits.map((habit) => (
-          <Grid>
+          <>
             {(user?.result?.googleId == habit?.creator ||
               user?.result?._id == habit?.creator) && (
-              <div key={habit._id}>
+              <Grid key={habit._id} item xs={12} sm={6} md={6} lg={4}>
                 <Habit habit={habit} setCurrentId={setCurrentId} />
-              </div>
+              </Grid>
             )}
-          </Grid>
+          </>
         ))}
       </Grid>
     </div>
