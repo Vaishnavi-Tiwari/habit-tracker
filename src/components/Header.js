@@ -32,7 +32,7 @@ function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light  navbar-fixed-top">
       <NavLink className="navbar-brand navbar-logo" to="/" exact>
-        habit
+        Habit-Tracker
       </NavLink>
       <button
         class="navbar-toggler"
